@@ -1,4 +1,4 @@
-# Graph and Heuristic Data for Search Algorithms
+# Graph and Heuristic Data
 
 graph = {
     'Arad': {'Zerind': 75, 'Timisoara': 118, 'Sibiu': 140},
@@ -23,9 +23,36 @@ graph = {
     'Eforie': {'Hirsova': 86}
 }
 
-heuristic = {
-    'Arad': 366, 'Bucharest': 0, 'Craiova': 160, 'Dobreta': 242, 'Eforie': 161,
-    'Fagaras': 178, 'Giurgiu': 77, 'Hirsova': 151, 'Iasi': 226, 'Lugoj': 244,
-    'Mehadia': 241, 'Neamt': 234, 'Oradea': 380, 'Pitesti': 98, 'Rimnicu Vilcea': 193,
-    'Sibiu': 253, 'Timisoara': 329, 'Urziceni': 80, 'Vaslui': 199, 'Zerind': 374
+
+# City coordinates (approximate, for Romania map problem)
+city_coords = {
+    'Arad': (91, 492),
+    'Bucharest': (400, 327),
+    'Craiova': (253, 288),
+    'Dobreta': (165, 299),
+    'Eforie': (562, 293),
+    'Fagaras': (305, 449),
+    'Giurgiu': (375, 270),
+    'Hirsova': (534, 350),
+    'Iasi': (473, 506),
+    'Lugoj': (165, 379),
+    'Mehadia': (168, 339),
+    'Neamt': (406, 537),
+    'Oradea': (131, 571),
+    'Pitesti': (320, 368),
+    'Rimnicu Vilcea': (233, 410),
+    'Sibiu': (207, 457),
+    'Timisoara': (94, 410),
+    'Urziceni': (456, 350),
+    'Vaslui': (509, 444),
+    'Zerind': (108, 531)
 }
+
+import math
+def straight_line_heuristic(city, goal):
+    """Return straight-line (Euclidean) distance between city and goal."""
+    if city not in city_coords or goal not in city_coords:
+        return float('inf')
+    x1, y1 = city_coords[city]
+    x2, y2 = city_coords[goal]
+    return math.hypot(x2 - x1, y2 - y1)

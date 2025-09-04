@@ -1,4 +1,4 @@
-# Depth-First Search (DFS) - Simple Version
+# Depth-First Search (DFS)
 
 def dfs(graph, start, goal):
     stack = [(start, [start])]

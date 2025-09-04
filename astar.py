@@ -1,17 +1,32 @@
-# A* Search - Simple Version
+# A* Search Algo
+import heapq
 
-def astar(graph, start, goal, heuristic):
-    open_set = [(heuristic[start], 0, start, [start])]
+def astar(graph, start, goal, heuristic_func):
+    priority_queue = [(heuristic_func(start, goal), 0, start, [start])]
     visited = set()
-    while open_set:
-        open_set.sort()
-        _, g_score, node, path = open_set.pop(0)
-        if node == goal:
+    
+    while priority_queue:
+        f_score, g_score, current_node, path = heapq.heappop(priority_queue)
+        
+        # Already the goal
+        if current_node == goal:
             return path
-        if node not in visited:
-            visited.add(node)
-            for neighbor in graph.get(node, []):
-                if neighbor not in visited:
-                    cost = graph[node][neighbor]
-                    open_set.append((g_score + cost + heuristic[neighbor], g_score + cost, neighbor, path + [neighbor]))
+        
+        # Skip
+        if current_node in visited:
+            continue
+        
+        # Add to visited
+        visited.add(current_node)
+        
+        # Explore neighbors
+        for neighbor, cost in graph.get(current_node, {}).items():
+            if neighbor not in visited:
+                # Calculate new costs
+                new_g_score = g_score + cost
+                new_f_score = new_g_score + heuristic_func(neighbor, goal)
+                
+                # Add neighbor to the priority queue
+                heapq.heappush(priority_queue, (new_f_score, new_g_score, neighbor, path + [neighbor]))
+                
     return []

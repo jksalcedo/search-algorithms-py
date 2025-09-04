@@ -1,4 +1,4 @@
-# Breadth-First Search (BFS) - Simple Version
+# Breadth-First Search (BFS)
 from collections import deque
 
 def bfs(graph, start, goal):

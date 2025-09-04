@@ -1,7 +1,7 @@
-# Greedy Best-First Search (GBFS) - Simple Version
+# Greedy Best-First Search (GBFS)
 
-def gbfs(graph, start, goal, heuristic):
-    queue = [(heuristic[start], start, [start])]
+def gbfs(graph, start, goal, heuristic_func):
+    queue = [(heuristic_func(start, goal), start, [start])]
     visited = set()
     while queue:
         queue.sort()
@@ -12,5 +12,5 @@ def gbfs(graph, start, goal, heuristic):
             visited.add(node)
             for neighbor in graph.get(node, []):
                 if neighbor not in visited:
-                    queue.append((heuristic[neighbor], neighbor, path + [neighbor]))
+                    queue.append((heuristic_func(neighbor, goal), neighbor, path + [neighbor]))
     return []
