@@ -1,6 +1,6 @@
-# Fundamental Search Algorithms
+# Fundamental Search Algorithms ( Problem Set 1 )
 
-This project is a collection of **fundamental search algorithms** used to solve **pathfinding problems in graphs**. It is part of our **Intro to Artificial Intelligence** subject.
+This project is a collection of **fundamental search algorithms** used to solve **pathfinding problems in graphs**. It is part of our **Intro to Artificial Intelligence** course.
 
 ## Implemented Algorithms
 - **Breadth-First Search (BFS)**
@@ -25,3 +25,7 @@ Clone the repository and run the program:
 git clone https://github.com/jksalcedo/search-algorithm-py.git
 cd search-algorithm-py
 python main.py
+```
+
+## License
+MIT - Feel free to use this for learning.
